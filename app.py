@@ -3,6 +3,14 @@ import pandas as pd
 import joblib
 import xgboost as xgb
 
+import os
+import subprocess
+
+# Debug: cek package terinstall
+st.text("Packages installed:")
+st.text(subprocess.check_output(["pip", "freeze"]).decode("utf-8"))
+
+
 # === Load Model & Tools ===
 model = xgb.XGBClassifier()
 model.load_model("xgboost_model.json")
@@ -221,3 +229,4 @@ elif page == "🗣️ Feedback":
     if st.button("📨 Kirim"):
         st.success("Terima kasih atas feedback-nya!")
         st.markdown(f"**Nama**: {name if name else 'Anonim'}  \n**Rating**: {rating}/5  \n**Komentar**: {comments}")
+
